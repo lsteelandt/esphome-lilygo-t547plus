@@ -65,6 +65,7 @@ void T547::update() {
   this->display();
 }
 
+/*
 void T547::image(int x, int y, esphome::display::Image *image, bool bNegative, Color color_on, Color color_off)
 {
   if (bNegative)
@@ -72,6 +73,7 @@ void T547::image(int x, int y, esphome::display::Image *image, bool bNegative, C
 
   DisplayBuffer::image(x, y, image, color_on, color_off);
 }
+*/
 
 void HOT T547::draw_absolute_pixel_internal(int x, int y, Color color) {
   if (x >= this->get_width_internal() || y >= this->get_height_internal() || x < 0 || y < 0)
