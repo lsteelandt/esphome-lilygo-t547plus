@@ -7,28 +7,6 @@
 #include <esp32-hal-gpio.h>
 
 
-
-void invertImage(esphome::image::Image& image) {
-    // Parcourir tous les pixels de l'image
-    for (int y = 0; y < image.get_height(); y++) {
-        for (int x = 0; x < image.get_width(); x++) {
-            // Inverser la valeur de chaque pixel
-            uint16_t pixel_value = image.get_pixel(x, y);
-            image.set_pixel(x, y, ~pixel_value);
-        }
-    }
-}
-
-
-void invertGrayImage(esphome::image::Image& image) {
-    for (int i = 0; i < image.width(); i++) {
-        for (int j = 0; j < image.height(); j++) {
-            uint8_t pixel = image.get_grayscale_pixel_(i, j);
-            image.set_grayscale_pixel_(i, j, 255 - pixel);
-        }
-    }
-}
-
 namespace esphome {
 namespace t547 {
 
@@ -65,15 +43,39 @@ void T547::update() {
   this->display();
 }
 
-/*
-void T547::image(int x, int y, esphome::display::Image *image, bool bNegative, Color color_on, Color color_off)
-{
-  if (bNegative)
-      invertImage(image);
 
-  DisplayBuffer::image(x, y, image, color_on, color_off);
-}
-*/
+void T547::imageNegative(int x, int y, ImageGray16 *image, Color color_on, Color color_off)
+{
+    auto x_align = ImageAlign(int(align) & (int(ImageAlign::HORIZONTAL_ALIGNMENT)));
+    auto y_align = ImageAlign(int(align) & (int(ImageAlign::VERTICAL_ALIGNMENT)));
+  
+    switch (x_align) {
+      case ImageAlign::RIGHT:
+        x -= image->get_width();
+        break;
+      case ImageAlign::CENTER_HORIZONTAL:
+        x -= image->get_width() / 2;
+        break;
+      case ImageAlign::LEFT:
+      default:
+        break;
+    }
+  
+    switch (y_align) {
+      case ImageAlign::BOTTOM:
+        y -= image->get_height();
+        break;
+      case ImageAlign::CENTER_VERTICAL:
+        y -= image->get_height() / 2;
+        break;
+      case ImageAlign::TOP:
+      default:
+        break;
+    }
+  
+    image->drawInverted(x, y, this, color_on, color_off);
+ }
+
 
 void HOT T547::draw_absolute_pixel_internal(int x, int y, Color color) {
   if (x >= this->get_width_internal() || y >= this->get_height_internal() || x < 0 || y < 0)

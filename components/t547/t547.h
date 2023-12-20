@@ -5,6 +5,7 @@
 #include "esphome/core/version.h"
 #include "esphome/components/display/display_buffer.h"
 #include "esphome/components/image/image.h"
+#include "ImageGray16.h"
 
 #include "epd_driver.h"
 
@@ -26,8 +27,8 @@ class T547 : public PollingComponent, public display::DisplayBuffer {
   void display();
   void clean();
   void update() override;
-  
-  //void image(int x, int y, esphome::display::Image *image,bool bNegative=false, Color color_on = esphome::display::COLOR_ON, Color color_off = esphome::display::COLOR_OFF) ;
+
+  void imageNegative(int x, int y, ImageGray16 *image, Color color_on = esphome::display::COLOR_ON, Color color_off = esphome::display::COLOR_OFF);
 
   void setup() override;
 
