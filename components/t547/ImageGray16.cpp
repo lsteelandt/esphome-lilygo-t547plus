@@ -1,6 +1,6 @@
 #include "ImageGray16.h"
 
-ImageGray16::ImageGray16(const uint8_t *data_start, int width, int height, esphome::image::ImageType type) : Image(data_start,  width,  height,  type)
+ImageGray16::ImageGray16(const uint8_t *data_start, int width, int height, esphome::image::ImageType type) : esphome::image::Image(data_start,  width,  height,  type)
 {
 
 }
