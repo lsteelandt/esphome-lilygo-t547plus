@@ -1,6 +1,6 @@
 #pragma once
 
-#include "esphome/image.h"
+#include "esphome/components/image/image.h"
  
 class ImageGray16 : public esphome::image::Image 
 {
