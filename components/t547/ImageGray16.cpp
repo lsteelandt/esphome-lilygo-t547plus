@@ -2,9 +2,9 @@
 
 namespace esphome {
 
-  ImageGray16::ImageGray16(const uint8_t *data_start, int width, int height, image::ImageType type)
+  ImageGray16::ImageGray16(const uint8_t *data_start, int width, int height, image::ImageType type) : image::Image(data_start,  width,  height,  type)
   {
-    image::Image(data_start,  width,  height,  type);
+ 
   }
 
 
