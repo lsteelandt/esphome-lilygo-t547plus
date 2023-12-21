@@ -1,12 +1,12 @@
 #include "ImageGray16.h"
 
-ImageGray16::ImageGray16(const uint8_t *data_start, int width, int height, ImageType type) : Image(data_start,  width,  height,  type)
+ImageGray16::ImageGray16(const uint8_t *data_start, int width, int height, esphome::image::ImageType type) : Image(data_start,  width,  height,  type)
 {
 
 }
 
 
-void ImageGray16::drawInverted(int x, int y, display::Display *display, Color color_on, Color color_off) {
+void ImageGray16::drawInverted(int x, int y, esphome::display::Display *display, esphome::ColorColor color_on, esphome::ColorColor color_off) {
    switch (type_) {
      case IMAGE_TYPE_BINARY: {
        for (int img_x = 0; img_x < width_; img_x++) {
