@@ -46,29 +46,29 @@ void T547::update() {
 
 void T547::imageNegative(int x, int y, image::ImageGray16 *image,display::ImageAlign align,  Color color_on, Color color_off)
 {
-    auto x_align = ImageAlign(int(align) & (int(ImageAlign::HORIZONTAL_ALIGNMENT)));
-    auto y_align = ImageAlign(int(align) & (int(ImageAlign::VERTICAL_ALIGNMENT)));
+    auto x_align = ImageAlign(int(align) & (int(display::ImageAlign::HORIZONTAL_ALIGNMENT)));
+    auto y_align = ImageAlign(int(align) & (int(display::ImageAlign::VERTICAL_ALIGNMENT)));
   
     switch (x_align) {
-      case ImageAlign::RIGHT:
+      case display::ImageAlign::RIGHT:
         x -= image->get_width();
         break;
-      case ImageAlign::CENTER_HORIZONTAL:
+      case display::ImageAlign::CENTER_HORIZONTAL:
         x -= image->get_width() / 2;
         break;
-      case ImageAlign::LEFT:
+      case display::ImageAlign::LEFT:
       default:
         break;
     }
   
     switch (y_align) {
-      case ImageAlign::BOTTOM:
+      case display::ImageAlign::BOTTOM:
         y -= image->get_height();
         break;
-      case ImageAlign::CENTER_VERTICAL:
+      case display::ImageAlign::CENTER_VERTICAL:
         y -= image->get_height() / 2;
         break;
-      case ImageAlign::TOP:
+      case display::ImageAlign::TOP:
       default:
         break;
     }
