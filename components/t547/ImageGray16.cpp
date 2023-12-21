@@ -1,8 +1,9 @@
 #include "ImageGray16.h"
 
 namespace esphome {
+namespace image {
 
-  ImageGray16::ImageGray16(const uint8_t *data_start, int width, int height, image::ImageType type) : image::Image(data_start,  width,  height,  type)
+  ImageGray16::ImageGray16(const uint8_t *data_start, int width, int height, ImageType type) : Image(data_start,  width,  height,  type)
   {
  
   }
@@ -45,4 +46,5 @@ namespace esphome {
     }
   }
 
+}
 }
