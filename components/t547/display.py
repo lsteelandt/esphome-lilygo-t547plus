@@ -44,6 +44,7 @@ async def to_code(config):
         cg.add(var.set_writer(lambda_))
 
     cg.add(var.set_greyscale(config[CONF_GREYSCALE]))
+    cg.add(var.imageNegative())
 
     cg.add_build_flag("-DBOARD_HAS_PSRAM")
 
