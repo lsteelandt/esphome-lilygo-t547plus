@@ -15,7 +15,7 @@ CONF_GREYSCALE = "greyscale"
 
 t547_ns = cg.esphome_ns.namespace("t547")
 T547 = t547_ns.class_(
-    "T547", cg.PollingComponent, display.T547 #DisplayBuffer
+    "T547", cg.PollingComponent, display.DisplayBuffer
 )
 
 CONFIG_SCHEMA = cv.All(
@@ -39,7 +39,7 @@ async def to_code(config):
 
     if CONF_LAMBDA in config:
         lambda_ = await cg.process_lambda(
-            config[CONF_LAMBDA], [(display.DisplayRef, "it")], return_type=cg.void
+            config[CONF_LAMBDA], [(display.T547, "it")], return_type=cg.void   #DisplayRef
         )
         cg.add(var.set_writer(lambda_))
 
