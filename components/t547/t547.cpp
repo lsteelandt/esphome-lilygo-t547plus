@@ -44,7 +44,7 @@ void T547::update() {
 }
 
 
-void T547::imageNegative(int x, int y, ImageGray16 *image, Color color_on, Color color_off)
+void T547::imageNegative(int x, int y, image::ImageGray16 *image, Color color_on, Color color_off)
 {
     auto x_align = ImageAlign(int(align) & (int(ImageAlign::HORIZONTAL_ALIGNMENT)));
     auto y_align = ImageAlign(int(align) & (int(ImageAlign::VERTICAL_ALIGNMENT)));
